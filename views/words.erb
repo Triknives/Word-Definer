@@ -1,0 +1,15 @@
+<h1>Word Definer</h1>
+
+<h3>Current Words</h3>
+
+<% if @words.any? %>
+<ul>
+  <% @words.each do |word| %>
+  <li><a href="/words/<%= word.id %>"><%= word.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are currently no words to display.</p>
+<% end %>
+
+<a href="/words/new">Add a new word!</a>
