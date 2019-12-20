@@ -5,7 +5,6 @@ require('./lib/definition')
 also_reload('lib/**/*.rb')
 
 get('/') do
-  # @albums = Album.sort
   erb(:landing_page)
 end
 
@@ -14,36 +13,36 @@ get('/words/new') do
 end
 
 get('/words/:id') do
-  @album = Album.find(params[:id].to_i())
-  erb(:album)
+  @word= Dictionairy.find(params[:id].to_i())
+  erb(:word)
 end
 
 post('/words') do
   values = *params.values
-  album = Album.new(values[0], nil, values[1], values[2], values[3])
-  album.save()
-  @albums = Album.all() # Adding this line will fix the error.
-  erb(:albums)
+  word = Dictionairy.new(values[0], nil)
+  word.save()
+  @words = Dictionairy.all() # Adding this line will fix the error.
+  erb(:words)
 end
 
 get('/words/:id/edit') do
-  @album = Album.find(params[:id].to_i())
-  erb(:edit_album)
+  @word = Dictionairy.find(params[:id].to_i())
+  erb(:edit_word)
 end
 
 patch('/words/:id') do
-  @album = Album.find(params[:id].to_i())
+  @word = Dictionairy.find(params[:id].to_i())
   values = *params.values
-  @album.update(values[1], values[2], values[3], values[4])
-  @albums = Album.all
-  erb(:albums)
+  @word.update(values[1]) #keep an eye on this when updating to see which value does change.
+  @words = Dictionairy.all
+  erb(:words)
 end
 
 delete('/words/:id') do
-  @album = Album.find(params[:id].to_i())
-  @album.delete()
-  @albums = Album.all
-  erb(:albums)
+  @word = Dictionairy.find(params[:id].to_i())
+  @word.delete()
+  @words = Dictionary.all
+  erb(:words)
 end
 
 # Get the detail for a specific song such as lyrics and songwriters.
