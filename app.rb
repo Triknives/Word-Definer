@@ -9,15 +9,6 @@ get('/') do
   erb(:landing_page)
 end
 
-get('/albums') do
-  if params["search"]
-    @albums = Album.search(params[:search])
-  else
-    @albums = Album.sort
-  end
-  erb(:albums)
-end
-
 get('/albums/new') do
   erb(:new_album)
 end
@@ -26,7 +17,6 @@ get('/albums/:id') do
   @album = Album.find(params[:id].to_i())
   erb(:album)
 end
-
 
 post('/albums') do
   values = *params.values
