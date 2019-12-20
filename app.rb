@@ -1,7 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/album')
-require('./lib/song')
+require('./lib/dictionairy')
+require('./lib/definition')
 also_reload('lib/**/*.rb')
 
 get('/') do
@@ -9,16 +9,16 @@ get('/') do
   erb(:landing_page)
 end
 
-get('/albums/new') do
-  erb(:new_album)
+get('/words/new') do
+  erb(:new_word)
 end
 
-get('/albums/:id') do
+get('/words/:id') do
   @album = Album.find(params[:id].to_i())
   erb(:album)
 end
 
-post('/albums') do
+post('/words') do
   values = *params.values
   album = Album.new(values[0], nil, values[1], values[2], values[3])
   album.save()
@@ -26,12 +26,12 @@ post('/albums') do
   erb(:albums)
 end
 
-get('/albums/:id/edit') do
+get('/words/:id/edit') do
   @album = Album.find(params[:id].to_i())
   erb(:edit_album)
 end
 
-patch('/albums/:id') do
+patch('/words/:id') do
   @album = Album.find(params[:id].to_i())
   values = *params.values
   @album.update(values[1], values[2], values[3], values[4])
@@ -39,7 +39,7 @@ patch('/albums/:id') do
   erb(:albums)
 end
 
-delete('/albums/:id') do
+delete('/words/:id') do
   @album = Album.find(params[:id].to_i())
   @album.delete()
   @albums = Album.all
@@ -47,13 +47,13 @@ delete('/albums/:id') do
 end
 
 # Get the detail for a specific song such as lyrics and songwriters.
-get('/albums/:id/songs/:song_id') do
+get('/words/:id/definitions/:word_id') do
   @song = Song.find(params[:song_id].to_i())
   erb(:songs)
 end
 
 # Post a new song. After the song is added, Sinatra will route to the view for the album the song belongs to.
-post('/albums/:id/songs') do
+post('/words/:id/definitions') do
   @album = Album.find(params[:id].to_i())
   song = Song.new(params[:song_name], @album.id, nil)
   song.save()
@@ -61,7 +61,7 @@ post('/albums/:id/songs') do
 end
 
 # Edit a song and then route back to the album view.
-patch('/albums/:id/songs/:song_id') do
+patch('/words/:id/definitions/:word_id') do
   @album = Album.find(params[:id].to_i())
   song = Song.find(params[:song_id].to_i())
   song.update(params[:name], @album.id)
@@ -69,7 +69,7 @@ patch('/albums/:id/songs/:song_id') do
 end
 
 # Delete a song and then route back to the album view.
-delete('/albums/:id/songs/:song_id') do
+delete('/words/:id/definitions/:wrong_id') do
   song = Song.find(params[:song_id].to_i())
   song.delete
   @album = Album.find(params[:id].to_i())
