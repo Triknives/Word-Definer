@@ -1,57 +1,57 @@
 class Definition
     attr_reader :id
-    attr_accessor :name, :album_id
+    attr_accessor :word, :word_id
 
-    @@songs = {}
+    @@definitions = {}
     @@total_rows = 0
 
-    def initialize(name, album_id, id)
-      @name = name
-      @album_id = album_id
+    def initialize(definition, word_id, id)
+      @definition = definition
+      @word_id = word_id
       @id = id || @@total_rows += 1
     end
 
     def ==(song_to_compare)
-      (self.name() == song_to_compare.name()) && (self.album_id() == song_to_compare.album_id())
+      (self.definition() == song_to_compare.definition()) && (self.word_id() == song_to_compare.word_id())
     end
 
     def self.all
-      @@songs.values
+      @@definitions.values
     end
 
     def save
-      @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
+      @@definition[self.id] = Definition.new(self.definition, self.word_id, self.id)
     end
 
     def self.find(id)
-      @@songs[id]
+      @@definitions[id]
     end
 
-    def update(name, album_id)
-      self.name = name
-      self.album_id = album_id
-      @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
+    def update(definition, word_id)
+      self.definition = definition
+      self.album_id = word_id
+      @@definitions[self.id] = Definition.new(self.definition, self.word_id, self.id)
     end
 
     def delete
-      @@songs.delete(self.id)
+      @@definitions.delete(self.id)
     end
 
     def self.clear
-      @@songs = {}
+      @@definitions = {}
     end
 
-    def self.find_by_album(alb_id)
-    songs = []
-    @@songs.values.each do |song|
-      if song.album_id == alb_id
-        songs.push(song)
+    def self.find_by_word(wrd_id)
+    words = []
+    @@songs.values.each do |word|
+      if word.word_id == wrd_id
+        words.push(word)
       end
     end
-    songs
+    words
   end
 
-    def album
-        Album.find(self.album_id)
+    def word
+        Dictionairy.find(self.word_id)
       end
   end
