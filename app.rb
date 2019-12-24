@@ -17,6 +17,14 @@ get('/words/:id') do
   erb(:word)
 end
 
+get('/words') do
+  values = *params.values
+  word = Dictionairy.new(values[0], nil)
+  word.save()
+  @words = Dictionairy.all() # Adding this line will fix the error.
+  erb(:words)
+end
+
 post('/words') do
   values = *params.values
   word = Dictionairy.new(values[0], nil)

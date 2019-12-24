@@ -35,12 +35,13 @@ class Dictionairy
 
   def update(word)
     @word = (word != '') ? word : @word
+  end
 
   def delete
     @@words.delete(self.id)
   end
 
-  def definitions
+  def definition
     Definition.find_by_word(self.id)
   end
 end
