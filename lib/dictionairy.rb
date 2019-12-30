@@ -1,5 +1,5 @@
 class Dictionairy
-  attr_reader :name, :id
+  attr_reader :word, :id
   @@words = {}
   @@total_rows = 0
 
@@ -41,7 +41,7 @@ class Dictionairy
     @@words.delete(self.id)
   end
 
-  def definition
+  def definitions
     Definition.find_by_word(self.id)
   end
 end
