@@ -5,21 +5,18 @@
   <% if @word.definitions %>
     <ul>
       <% @word.definitions.each do |definition| %>
-        <li><a href="/albums/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.word %></a></li>
+        <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.word %></a></li>
       <% end %>
     </ul>
   <% else %>
     <p>There are no songs listed for this album yet.</p>
   <% end %>
-
-<h4>Add definition:</h4>
-
-<form action="/albums/<%= @word.id %>/definitions" method="post">
+<form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">
-    <label for="word_definition">Definition</label>
-    <input id="word_definition" name="word_definition" class="form-control" type="text">
+    <label for="definition_word">Definition</label>
+    <input id="definition_word" name="definition_word" class="form-control" type="text">
   </div>
-  <button type="submit" class="btn">Add song</button>
+  <button type="submit" class="btn">Update definition</button>
 </form>
 
 <p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>

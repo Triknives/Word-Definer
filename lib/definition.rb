@@ -20,17 +20,17 @@ class Definition
     end
 
     def save
-      @@definition[self.id] = Definition.new(self.definition, self.word_id, self.id)
+      @@definitions[self.id] = Definition.new(self.word, self.word_id, self.id)
     end
 
     def self.find(id)
       @@definitions[id]
     end
 
-    def update(definition, word_id)
-      self.definition = definition
-      self.album_id = word_id
-      @@definitions[self.id] = Definition.new(self.definition, self.word_id, self.id)
+    def update(word, word_id)
+      self.word = word
+      self.word_id = word_id
+      @@definitions[self.id] = Definition.new(self.word, self.word_id, self.id)
     end
 
     def delete
@@ -43,7 +43,7 @@ class Definition
 
     def self.find_by_word(wrd_id)
     words = []
-    @@songs.values.each do |word|
+    @@definitions.values.each do |word|
       if word.word_id == wrd_id
         words.push(word)
       end

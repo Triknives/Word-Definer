@@ -76,7 +76,7 @@ patch('/words/:id/definitions/:word_id') do
 end
 
 # Delete a song and then route back to the album view.
-delete('/words/:id/definitions/:wrong_id') do
+delete('/words/:id/definitions/:word_id') do
   definition = Definition.find(params[:word_id].to_i())
   definition.delete
   @word = Definition.find(params[:id].to_i())
