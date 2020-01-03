@@ -1,15 +1,14 @@
-<h2><%= @word.word %></h2>
+<h2><%=@word.word %></h2>
+<h3>Definitions</h3>
 
-<h3>Word Definition</h3>
-
-  <% if @word.definitions %>
+  <% if @word.definition %>
     <ul>
-      <% @word.definitions.each do |definition| %>
+      <% @word.definition.each do |definition| %>
         <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.word %></a></li>
       <% end %>
     </ul>
   <% else %>
-    <p>There are no songs listed for this album yet.</p>
+    <p>There are no definitions listed for this word yet.</p>
   <% end %>
 <form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">

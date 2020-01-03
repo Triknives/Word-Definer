@@ -55,7 +55,7 @@ end
 
 # Get the detail for a specific song such as lyrics and songwriters.
 get('/words/:id/definitions/:word_id') do
-  @definition = Definition.find(params[:word_id].to_i())
+  @definitions = Definition.find(params[:word_id].to_i())
   erb(:definitions)
 end
 
@@ -77,8 +77,8 @@ end
 
 # Delete a song and then route back to the album view.
 delete('/words/:id/definitions/:word_id') do
-  definition = Definition.find(params[:word_id].to_i())
-  definition.delete
+  definitions = Definition.find(params[:word_id].to_i())
+  definitions.delete
   @word = Definition.find(params[:id].to_i())
   erb(:word)
 end

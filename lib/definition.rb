@@ -1,22 +1,27 @@
 class Definition
     attr_reader :id
-    attr_accessor :word, :word_id
+    attr_accessor :definitions, :word_id
 
     @@definitions = {}
     @@total_rows = 0
 
-    def initialize(definition, word_id, id)
-      @definition = definition
+    def initialize(definitions, word_id, id)
+      @definitions = definitions
       @word_id = word_id
       @id = id || @@total_rows += 1
     end
 
-    def ==(song_to_compare)
-      (self.definition() == song_to_compare.definition()) && (self.word_id() == song_to_compare.word_id())
+    def ==(definitions_to_compare)
+      (self.definitions() == definitions_to_compare.definitions()) && (self.word_id() == definitions_to_compare.word_id())
     end
 
     def self.all
       @@definitions.values
+    end
+
+    def self.clear
+      @@definitions = {}
+      @@total_rows = 0
     end
 
     def save
@@ -28,7 +33,7 @@ class Definition
     end
 
     def update(word, word_id)
-      self.word = word
+      self.definitions = definitions
       self.word_id = word_id
       @@definitions[self.id] = Definition.new(self.word, self.word_id, self.id)
     end
@@ -41,11 +46,11 @@ class Definition
       @@definitions = {}
     end
 
-    def self.find_by_word(wrd_id)
+    def self.find_by_word(word_id)
     words = []
-    @@definitions.values.each do |word|
-      if word.word_id == wrd_id
-        words.push(word)
+    @@definitions.values.each do |definitions|
+      if definitions.word_id == word_id
+        words.push(definitions)
       end
     end
     words
