@@ -1,10 +1,10 @@
 class Dictionairy
-  attr_reader :word, :id
+  attr_reader :name, :id
   @@words = {}
   @@total_rows = 0
 
-  def initialize(word, id)
-    @word = word
+  def initialize(name, id)
+    @name = name
     @id = id || @@total_rows += 1
   end
 
@@ -13,11 +13,11 @@ class Dictionairy
   end
 
   def save
-    @@words[self.id] = Dictionairy.new(self.word, self.id)
+    @@words[self.id] = Dictionairy.new(self.name, self.id)
   end
 
-  def ==(word_to_compare)
-    self.word() == word_to_compare.word()
+  def ==(name_to_compare)
+    self.name() == name_to_compare.name()
   end
 
   def self.clear
@@ -29,12 +29,12 @@ class Dictionairy
     @@words[id]
   end
 
-  # def self.sort
-  #   @@words.values.sort { |a, b| a.word <=> b.word }
-  # end
+  def self.sort
+    @@words.values.sort { |a, b| a.name <=> b.name }
+  end
 
-  def update(word)
-    @word = (word == "") ? self.word : word
+  def update(name)
+    @name = (name == "") ? self.name : name
   end
 
   def delete
