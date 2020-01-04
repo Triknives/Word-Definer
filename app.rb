@@ -41,7 +41,7 @@ end
 patch('/words/:id') do
   @word = Dictionairy.find(params[:id].to_i())
   values = *params.values
-  @word.update(values[1]) #keep an eye on this when updating to see which value does change.
+  @word.update(params[:word_name]) #keep an eye on this when updating to see which value does change.
   @words = Dictionairy.all
   erb(:words)
 end
@@ -53,13 +53,13 @@ delete('/words/:id') do
   erb(:words)
 end
 
-# Get the detail for a specific song such as lyrics and songwriters.
+# Get the detail for a specific word such as definition
 get('/words/:id/definitions/:word_id') do
-  @definitions = Definition.find(params[:word_id].to_i())
+  @definition = Definition.find(params[:word_id].to_i())
   erb(:definitions)
 end
 
-# Post a new song. After the song is added, Sinatra will route to the view for the album the song belongs to.
+# Post a new definition. After the definition is added, Sinatra will route to the view for the word the definition belongs to.
 post('/words/:id/definitions') do
   @word = Dictionairy.find(params[:id].to_i())
   definition = Definition.new(params[:definition_word],  @word.id, nil) #come back to definition_word, ensure its correct
@@ -67,11 +67,11 @@ post('/words/:id/definitions') do
   erb(:word)
 end
 
-# Edit a song and then route back to the album view.
+# Edit a definition and then route back to the wordview.
 patch('/words/:id/definitions/:word_id') do
   @word = Dictionairy.find(params[:id].to_i())
   definition = Definition.find(params[:word_id].to_i())
-  definition.update(params[:word], @word.id)
+  definition.update(params[:name], @word.id)
   erb(:word)
 end
 

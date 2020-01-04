@@ -25,17 +25,17 @@ class Definition
     end
 
     def save
-      @@definitions[self.id] = Definition.new(self.word, self.word_id, self.id)
+      @@definitions[self.id] = Definition.new(self.definitions, self.word_id, self.id)
     end
 
     def self.find(id)
       @@definitions[id]
     end
 
-    def update(word, word_id)
+    def update(definitions, word_id)
       self.definitions = definitions
       self.word_id = word_id
-      @@definitions[self.id] = Definition.new(self.word, self.word_id, self.id)
+      @@definitions[self.id] = Definition.new(self.definitions, self.word_id, self.id)
     end
 
     def delete

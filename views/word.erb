@@ -12,13 +12,11 @@
   <% end %>
 
   <h3>Add a definition for this word</h3>
-<form action="/words/<%= @name.id %>/definitions" method="post">
-  <div class="form-group">
+  <form action="/words/<%= @word.id %>/definitions" method="post">
     <label for="definition_word">Definition</label>
     <input id="definition_word" name="definition_word" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Update definition</button>
-</form>
+    <button type="submit" class="btn">Update definition</button>
+  </form>
 
-<!-- <p><a href="/words/<%= @name.id %>/edit">Edit word</a></p> -->
+<p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
 <p><a href="/words">Return to word list</a></p>
