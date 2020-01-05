@@ -67,7 +67,7 @@ post('/words/:id/definitions') do
   erb(:word)
 end
 
-# Edit a definition and then route back to the wordview.
+# Edit a definition and then route back to the word view.
 patch('/words/:id/definitions/:word_id') do
   @word = Dictionairy.find(params[:id].to_i())
   definition = Definition.find(params[:word_id].to_i())
@@ -75,10 +75,10 @@ patch('/words/:id/definitions/:word_id') do
   erb(:word)
 end
 
-# Delete a song and then route back to the album view.
+# Delete a song and then route back to the word view.
 delete('/words/:id/definitions/:word_id') do
-  definitions = Definition.find(params[:word_id].to_i())
-  definitions.delete
-  @word = Definition.find(params[:id].to_i())
-  erb(:words)
+  definition = Definition.find(params[:word_id].to_i())
+  definition.delete
+  @word = Dictionairy.find(params[:id].to_i())
+  erb(:word)
 end
