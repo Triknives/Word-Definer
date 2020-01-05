@@ -17,7 +17,7 @@ class Dictionairy
   end
 
   def ==(name_to_compare)
-    self.name() == name_to_compare.name()
+    self.name.eql?(name_to_compare.name)
   end
 
   def self.clear

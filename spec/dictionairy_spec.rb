@@ -21,8 +21,21 @@ describe '#Word' do
     end
   end
   describe('.find') do
-    it('finds an word by id') do
-      expect(Dictionairy.find(@word.id)).to(eq(@Word))
+    it('finds a word by id') do
+      @word2 = Dictionairy.new('please', nil)
+      expect(Dictionairy.find(@word2.id)).to(eq(@Word2))
+    end
+  end
+  describe('#update') do
+    it('updates a word by id') do
+      @word.update('yupper')
+      expect(@word.name).to(eq('yupper'))
+    end
+  end
+  describe('#update') do
+    it('deletes a word by') do
+      @word.delete
+      expect(Dictionairy.all).to(eq([]))
     end
   end
 end
