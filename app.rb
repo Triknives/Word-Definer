@@ -80,5 +80,5 @@ delete('/words/:id/definitions/:word_id') do
   definitions = Definition.find(params[:word_id].to_i())
   definitions.delete
   @word = Definition.find(params[:id].to_i())
-  erb(:word)
+  erb(:words)
 end
