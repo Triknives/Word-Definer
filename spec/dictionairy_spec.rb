@@ -20,4 +20,9 @@ describe '#Word' do
       expect(Dictionairy.all).to(eq([]))
     end
   end
+  describe('.find') do
+    it('finds an word by id') do
+      expect(Dictionairy.find(@word.id)).to(eq(@Word))
+    end
+  end
 end
