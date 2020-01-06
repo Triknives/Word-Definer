@@ -1,6 +1,6 @@
 # _Word Definer_
 
-#### _This application will provide the user the ability to maintain a list of words and create definitions for them._
+#### _This application will provide the user the ability to maintain a list of words and provide definitions for the application to store for each word._
 
 #### By _**Brett Cordell**_
 
@@ -9,13 +9,16 @@
 _The focus of this application is to provide the User with the ability to keep and maintain a list of words that they would like to learn the definition of. The User will be able to add to the growing list of words and add definitions as they please, while further having the ability to update their list with new words and definitions or remove words._
 
 
-## Input / Output
+## Input Functionality
+* _User will be able to add a word to a list or "word bank."_
+* _User will be able to to add a definition to the word added to the bank._
+* _User will further be able to add, update, read and delete words added._
 
-|  Behavior | Input  | Output  |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
+## Output Functionality
+* _Application will update "word bank" or word list on the Words page._
+* _Application will update definitions list per word. User will be able to see this list add or remove definitions._
+* _Application will further show updates made to the word definitions list._
+
 
 ## Setup/Installation Requirements
 
@@ -48,4 +51,4 @@ _If you have any concerns, comments or even suggestions on how to better organiz
 ### License
 *This software is licensed under the MIT license.*
 
-Copyright (c) 2016 **_Brett Cordell_**
+Copyright (c) 2019 **_Brett Cordell_**
