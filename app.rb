@@ -1,5 +1,5 @@
 require('sinatra')
-require('sinatra-reloader')
+require('sinatra/reloader')
 require('./lib/dictionairy')
 require('./lib/definition')
 also_reload('lib/**/*.rb')
