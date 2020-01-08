@@ -6,7 +6,11 @@
 
 ## Description
 
-_The focus of this application is to provide the User with the ability to keep and maintain a list of words that they would like to learn the definition of. The User will be able to add to the growing list of words and add definitions as they please, while further having the ability to update their list with new words and definitions or remove words._
+_The focus of this application is to provide the User with the ability to keep and maintain a list of words that they would like to learn the definition of. The User will be able to add to the growing list of words and add definitions as they please, while further having the ability to update their list with new words and definitions or remove words.
+
+Link to Heroku Deployment site:
+
+https://fast-tundra-50738.herokuapp.com/ _
 
 
 ## Input Functionality
