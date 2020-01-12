@@ -52,7 +52,7 @@ describe '#definition' do
       definition2 = Definition.new("Formal affirmation", @word.id, nil)
       definition2.save
       definition.delete()
-      expect(Definition.all).to(eq([definition1]))
+      expect(Definition.all).to(eq([definition2]))
     end
   end
 end
